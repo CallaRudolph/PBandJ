@@ -6,6 +6,9 @@ class Pbj extends React.Component {
   constructor(props) {
     super(props);
     console.log("1. Collect your ingredients. (2 slices bread, 1-2 butter knives, 1 jar peanut butter, 1 jar jelly or jam)");
+    this.state = {
+      stuff: [],
+    }
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
 
@@ -19,6 +22,22 @@ class Pbj extends React.Component {
 
   componentWillReceiveProps() {
     console.log("5. Grab a second slice of bread.");
+    var newMasterStuff = this.state.stuff.slice();
+    newMasterStuff.push("newStuff");
+    this.setState({stuff: newMasterStuff});
+  }
+
+  shouldComponentUpdate() {
+    console.log("6. Repeat steps 2-4 with second slice of bread, using jelly instead of peanut butter.");
+    return true;
+  }
+
+  componentWillUpdate() {
+    console.log("7. Press the two slices of bread together so that the peanut butter and jelly meet.");
+  }
+
+  componentDidUpdate() {
+    console.log("8. Cut the sandwich diagonally using one of the knives.");
   }
 
   render() {
@@ -26,8 +45,9 @@ class Pbj extends React.Component {
     return (
       <div>
         <h1>I am a banana in this sandwich.</h1>
-        <p>Once you've stuck the butter knife in the PB jar...</p>
-        <ReceiveProps onButtonClick={this.componentWillReceiveProps}/>
+        <img src="http://i0.kym-cdn.com/entries/icons/original/000/003/117/banana.jpg"/>
+        <p>Once you've stuck the butter knife in the PB jar... <ReceiveProps onButtonClick={this.componentWillReceiveProps}/></p>
+
       </div>
     );
   }

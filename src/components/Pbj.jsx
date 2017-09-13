@@ -17,31 +17,35 @@ class Pbj extends React.Component {
   }
 
   componentDidMount() {
-    console.log("4. Withdraw the knife from the peanut butter, and evenly spread it onto one slice of bread.");
+    console.log("3. Pick up a butter knife by the handle and insert into the jar of peanut butter");
   }
 
   componentWillReceiveProps() {
-    console.log("5. Grab a second slice of bread.");
+    console.log("4. Withdraw the knife from the peanut butter, and evenly spread it onto one slice of bread.");
     var newMasterStuff = this.state.stuff.slice();
     newMasterStuff.push("newStuff");
     this.setState({stuff: newMasterStuff});
   }
 
   shouldComponentUpdate() {
-    console.log("6. Repeat steps 2-4 with second slice of bread, using jelly instead of peanut butter.");
+    console.log("5. Grab a second slice of bread.");
     return true;
   }
 
   componentWillUpdate() {
-    console.log("7. Press the two slices of bread together so that the peanut butter and jelly meet.");
+    console.log("6. Repeat steps 2-4 with second slice of bread, using jelly instead of peanut butter.");
   }
 
   componentDidUpdate() {
+    console.log("7. Press the two slices of bread together so that the peanut butter and jelly meet.");
+  }
+
+  componentWillUnmount() {
     console.log("8. Cut the sandwich diagonally using one of the knives.");
   }
 
   render() {
-    console.log("3. Pick up a butter knife by the handle and insert into the jar of peanut butter");
+
     return (
       <div>
         <h1>I am a banana in this sandwich.</h1>

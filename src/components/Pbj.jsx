@@ -1,5 +1,5 @@
 import React from "react";
-import ReceiveProps from "./ReceiveProps.jsx";
+import ReceiveProps from "./ReceiveProps";
 
 class Pbj extends React.Component {
 
@@ -7,9 +7,11 @@ class Pbj extends React.Component {
     super(props);
     console.log("1. Collect your ingredients. (2 slices bread, 1-2 butter knives, 1 jar peanut butter, 1 jar jelly or jam)");
     this.state = {
-      stuff: [],
+      stuff: ["newStuff"],
     }
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+    this.destroyEverything = this.destroyEverything.bind(this);
+    let displayArea = null;
   }
 
   componentWillMount() {
@@ -22,9 +24,7 @@ class Pbj extends React.Component {
 
   componentWillReceiveProps() {
     console.log("4. Withdraw the knife from the peanut butter, and evenly spread it onto one slice of bread.");
-    var newMasterStuff = this.state.stuff.slice();
-    newMasterStuff.push("newStuff");
-    this.setState({stuff: newMasterStuff});
+
   }
 
   shouldComponentUpdate() {
@@ -37,25 +37,42 @@ class Pbj extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("7. Press the two slices of bread together so that the peanut butter and jelly meet.");
-  }
-
-  componentWillUnmount() {
     console.log("8. Cut the sandwich diagonally using one of the knives.");
   }
 
-  render() {
+  destroyEverything(){
+    var newMasterStuff = this.state.stuff.slice();
+    newMasterStuff.pop();
+    this.setState({stuff: newMasterStuff});
+  }
 
-    return (
+  render() {
+    if (this.state.stuff.includes("newStuff")) {
+      this.displayArea =
       <div>
         <h1>I am a banana in this sandwich.</h1>
         <img src="http://i0.kym-cdn.com/entries/icons/original/000/003/117/banana.jpg"/>
-        <p>Once you've stuck the butter knife in the PB jar... <ReceiveProps onButtonClick={this.componentWillReceiveProps}/></p>
 
+        <div>Once you've stuck the butter knife in the PB jar...
+          {this.state.stuff.map((receiver, index) =>
+            <ReceiveProps
+              destroyEverything={this.destroyEverything}
+              onButtonClick={this.componentWillReceiveProps}
+              heresSomeStuff={receiver}
+              key={index}/>
+          )}
+        </div>
       </div>
+    } else {
+      this.displayArea = <p>YOU MADE A SANDWICH, YOU CHEF YOU.</p>
+    }
+
+    return (
+      <h1>
+        {this.displayArea}
+      </h1>
     );
   }
-
 }
 
 export default Pbj;

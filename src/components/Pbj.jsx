@@ -53,7 +53,7 @@ class Pbj extends React.Component {
         <h1>I am a banana in this sandwich.</h1>
         <img src="http://i0.kym-cdn.com/entries/icons/original/000/003/117/banana.jpg"/>
 
-        <div>Once you've stuck the butter knife in the PB jar...
+        <div>
           {this.state.stuff.map((receiver, index) =>
             <ReceiveProps
               destroyEverything={this.destroyEverything}

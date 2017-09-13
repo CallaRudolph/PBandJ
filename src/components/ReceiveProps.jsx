@@ -19,8 +19,16 @@ class ReceiveProps extends React.Component {
   render() {
     return(
       <div>
-        <button onClick={this.handleButtonClick}>Click Here!</button>
-        <button onClick={this.props.destroyEverything}>Delete Me!</button>
+        <p>
+          Once you've stuck the butter knife in the PB jar...
+          <button onClick={this.handleButtonClick}>Click Here!</button>
+        </p>
+
+        <p>
+          Once you've spread that goodness on one slice of bread...  
+          <button onClick={this.props.destroyEverything}>Delete Me!</button>
+        </p>
+
 
       </div>
     )

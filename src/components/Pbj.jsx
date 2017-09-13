@@ -12,6 +12,7 @@ class Pbj extends React.Component {
   }
 
   render() {
+    console.log("3. Pick up a butter knife by the handle and insert into the jar of peanut butter");
     return (
       <div>
         <h1>I am a banana in this sandwich.</h1>
